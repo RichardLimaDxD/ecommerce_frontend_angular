@@ -1,0 +1,35 @@
+<div class="container__product-details" *ngIf="product">
+  <div>
+    <img
+      src="{{ product.productPicture }}"
+      alt="{{ product.name }}"
+      onerror="this.onerror=null; this.src='../../assets/images/default-image.png';"
+    />
+  </div>
+  <div class="container__infoProduct">
+    <h3>{{ product.name }}</h3>
+    <h2>{{ product.categoryName }}</h2>
+    <p>{{ product.price | currency }}</p>
+
+    <div>
+      <i
+        (click)="decrementQuantity()"
+        class="fa fa-minus-square text-danger"
+        style="font-weight: bold; cursor: pointer; font-size: 2em"
+      ></i>
+      <span style="font-weight: bold">{{ quantity }}</span>
+      <i
+        (click)="incrementQuantity()"
+        class="fa fa-plus-square text-danger"
+        style="font-weight: bold; cursor: pointer; font-size: 2em"
+      ></i>
+    </div>
+    <button (click)="addItemToBasket()">adicionar ao carrinho</button>
+    <div>
+      <div class="container__descript">
+        <h3>Descrição</h3>
+        <p>{{ product.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

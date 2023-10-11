@@ -1,0 +1,23 @@
+.nav-link {
+  color: #0d6efd;
+
+  &.active {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+.card-number {
+  background: red;
+  color: white;
+
+  width: 26px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  text-align: center;
+
+  font-size: 1rem;
+  font-weight: 600;
+}

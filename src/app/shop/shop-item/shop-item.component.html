@@ -1,0 +1,18 @@
+<ul>
+  <li>
+    <img
+      src="{{ product.productPicture }}"
+      alt="{{ product.name }}"
+      class="card-img-top"
+      onerror="this.onerror=null; this.src='../../assets/images/default-image.png';"
+    />
+
+    <div class="card-body">
+      <a routerLink="/shop/{{ product.id }}" class="text-decoration-none">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">R{{ product.price | currency }}</p>
+        <p class="card-text">{{ product.description }}</p>
+      </a>
+    </div>
+  </li>
+</ul>

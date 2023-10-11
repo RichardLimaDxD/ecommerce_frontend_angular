@@ -1,0 +1,15 @@
+ul {
+  list-style: none;
+  li {
+    list-style: none;
+  }
+}
+
+.card-body {
+  a {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

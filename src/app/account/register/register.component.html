@@ -1,0 +1,114 @@
+<div class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit()">
+      <img src="../../../assets/images/shopping-basket-icon.jpg" alt="logo" />
+      <h1 class="h3 mb-3 fw-normal">Nova conta</h1>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          formControlName="displayName"
+          class="form-control"
+          placeholder="Name"
+          [class.is-invalid]="_displayName.invalid && _displayName.touched"
+          [class.is-valid]="_displayName.valid"
+        />
+        <label>Nome</label>
+        <small
+          class="text-danger"
+          style="font-weight: bold"
+          [class.d-none]="_displayName.valid || _displayName.untouched"
+        >
+          * Preencha esse campo !</small
+        >
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="name@example.com"
+          [class.is-invalid]="_email.invalid && _email.touched ||_email?.errors?.['emailExists']"
+          [class.is-valid]="_email.valid"
+        />
+        <span [ngClass]="{ hideLoader: !_email.pending }">
+          <i class="fa fa-spinner fa-spin text-danger loader"></i>
+        </span>
+        <div
+          *ngIf="_email.invalid && _email.touched || _email?.errors?.['emailExists']"
+        >
+          <small
+            class="text-danger"
+            style="font-weight: bold"
+            *ngIf="_email?.errors?.['required']"
+            >* E-mail obrigatório !</small
+          >
+          <small
+            class="text-danger"
+            style="font-weight: bold"
+            *ngIf="_email?.errors?.['pattern']"
+            >* E-mail inválido!</small
+          >
+          <small
+            class="text-danger"
+            style="font-weight: bold"
+            *ngIf="_email?.errors?.['emailExists']"
+            >* Esse E-mail já existe !</small
+          >
+        </div>
+        <label for="floatingInput">E-mail</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="password"
+          [class.is-invalid]="_password.invalid && _password.touched"
+          [class.is-valid]="_password.valid"
+        />
+        <label for="floatingPassword">Senha</label>
+        <small
+          class="text-danger"
+          style="font-weight: bold"
+          [class.d-none]="_password.valid || _password.untouched"
+        >
+          * Crie uma senha !</small
+        >
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Password"
+          [class.is-invalid]="registerForm.errors?.['misMatch']"
+          [class.is-valid]="!registerForm.errors?.['misMatch'] && _confirmpassword.touched &&_confirmpassword.dirty"
+        />
+        <label for="floatingPassword">Confirmar senha</label>
+        <small
+          class="text-danger"
+          style="font-weight: bold"
+          *ngIf="registerForm.errors?.['misMatch']"
+        >
+          * Senhas não são iguis!</small
+        >
+      </div>
+      <ol *ngIf="errors" class="text-danger" style="font-weight: bold">
+        <li *ngFor="let item of errors">
+          {{ item }}
+        </li>
+      </ol>
+
+      <button
+        class="w-100 btn btn-lg btn-danger"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Cadastrar
+      </button>
+    </form>
+  </main>
+</div>
